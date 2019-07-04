@@ -1,0 +1,8 @@
+{
+  "name": "webpack-workflow",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:wangcylive/webpack-workflow.git",
+  "author": "wangchunyang <wangcylive@outlook.com>",
+  "license": "MIT"
+}
