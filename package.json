@@ -2,6 +2,9 @@
   "name": "webpack-workflow",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "start": "node ./test/b.js -env=ss"
+  },
   "repository": "git@github.com:wangcylive/webpack-workflow.git",
   "author": "wangchunyang <wangcylive@outlook.com>",
   "license": "MIT"

@@ -9,7 +9,6 @@ const webpackMerge = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CopyPlugin = require('copy-webpack-plugin')
 const webpackBaseConf = require('./webpack.base.conf')
 
 const {
@@ -31,11 +30,6 @@ module.exports = (env) => {
 
     devtool: 'none',
 
-    stats: {
-      modules: false,
-      children: false,
-    },
-
     plugins: [
       new webpack.DefinePlugin({
         'process.env': {
@@ -51,14 +45,7 @@ module.exports = (env) => {
         cssProcessorOptions: {
           safe: true,
         },
-      }),
-      new CopyPlugin([
-        {
-          from: './src/image/card/**/*',
-          to: './assets/card',
-          flatten: true
-        }
-      ])
+      })
     ],
   })
 }

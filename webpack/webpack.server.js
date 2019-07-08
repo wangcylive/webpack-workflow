@@ -19,20 +19,11 @@ module.exports = webpackMerge(webpackBaseConf, {
 
   devServer: {
     contentBase: path.resolve(__dirname, '../src'),
-
-    // 启用 gzip 压缩
-    compress: true,
-
+    compress: true, // 启用 gzip 压缩
     port: serverPort,
-    // inline: true,
     historyApiFallback: true,
     disableHostCheck: true,
-
-    host: '0.0.0.0',
-
-    stats: {
-      modules: false
-    }
+    host: '0.0.0.0'
   },
 
   plugins: [
