@@ -1,10 +1,8 @@
 node_modules
+dist
 .*
 !.babelrc
 !.browserslistrc
 !.editorconfig
 !.gitignore
 !.postcssrc.js
-!.gitlab-ci.yml
-yarn-error.log
-dist

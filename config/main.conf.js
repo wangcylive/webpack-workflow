@@ -1,14 +1,14 @@
 const path = require('path')
-const findSync = require('./findPathSync')
+const findSync = require('./find.path.sync')
 
 const entryPath = findSync('./src/main')
 
-const entry = {}
+const mainConf = {}
 
 entryPath.forEach(item => {
   const filename = item.split(path.sep).pop()
   const name = filename.substring(0, filename.lastIndexOf('.'))
-  entry[ name ] = './' + item
+  mainConf[ name ] = './' + item
 })
 
-module.exports = entry
+module.exports = mainConf

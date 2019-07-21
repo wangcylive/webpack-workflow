@@ -1,7 +1,7 @@
 const path = require('path')
-const findSync = require('./findPathSync')
+const findSync = require('./find.path.sync')
 
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlConf = require('html-webpack-plugin')
 
 const htmlPath = findSync('./src/html')
 
@@ -12,7 +12,7 @@ htmlPath.forEach(item => {
 
   const chunks = filename.substring(0, filename.lastIndexOf('.'))
 
-  array.push(new HtmlWebpackPlugin({
+  array.push(new HtmlConf({
     template: './' + item,
     filename,
     chunks: [ 'manifest', 'vendors', chunks ]

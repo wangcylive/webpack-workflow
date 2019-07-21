@@ -2,12 +2,12 @@ const fs = require('fs')
 const join = require('path').join
 
 /**
- *
+ * 遍历目录
  * @param startPath  起始目录文件夹路径
  * @returns {Array}
  */
 function findSync (startPath) {
-  let result = []
+  const result = []
 
   function finder (path) {
     let files = fs.readdirSync(path)
