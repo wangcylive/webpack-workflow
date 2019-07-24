@@ -1,16 +1,21 @@
 const path = require('path')
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
-const { development } = require('./env.conf')
+const { development } = require('./env-conf')
 const packageJson = require('../package')
-const hostIp = require('./host.ip')
+const hostIp = require('./host-ip')
 const webpackBaseConf = require('./webpack.common')
 const serverPort = packageJson.serverPort
+process.env.NODE_ENV = development
 
 // 代理服务器
 const proxyServer = '/api'
 
 module.exports = (env) => {
+  const defineEnv = {}
+  Object.entries(env).forEach(([key, value]) => {
+    defineEnv[key] = JSON.stringify(value)
+  })
   return webpackMerge(webpackBaseConf(development, env), {
     mode: development,
 
@@ -37,11 +42,13 @@ module.exports = (env) => {
       },
     },
 
+
     plugins: [
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify(development),
-        },
+          ...defineEnv
+        }
       }),
     ],
   })

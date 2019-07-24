@@ -6,8 +6,8 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserJsPlugin = require('terser-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const webpackBaseConf = require('./webpack.common')
-const { production } = require('./env.conf')
-const { getAssetsPath } = require('./path.conf')
+const { production } = require('./env-conf')
+const { getAssetsPath } = require('./path-conf')
 
 module.exports = (env) => {
   const publicPath = '/'

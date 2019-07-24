@@ -1,5 +1,7 @@
 const path = require('path')
-const { isProduction } = require('./env.conf')
+const { isProduction } = require('./env-conf')
+
+console.log('path', process.env.NODE_ENV)
 
 const assetsPath = 'assets'
 

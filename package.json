@@ -7,7 +7,7 @@
   "license": "MIT",
   "serverPort": 11001,
   "scripts": {
-    "start": "webpack-dev-server --config config/webpack.dev.js --hot",
+    "start": "webpack-dev-server --config config/webpack.dev.js --hot --env.api=test --env.server=a",
     "build": "webpack --config config/webpack.prod.js",
     "test": "jest"
   },

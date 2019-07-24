@@ -1,9 +1,9 @@
 const path = require('path')
-const htmlWebpackPlugin = require('./html.conf')
-const entry = require('./main.conf')
+const htmlWebpackPlugin = require('./html-conf')
+const entry = require('./main-conf')
 
 module.exports = (mode, env) => {
-  const { getCssLoader, getSassLoader, getLessLoader, getFontOptions, getImgOptions } = require('./rules.conf')(mode, env)
+  const { getCssLoader, getSassLoader, getLessLoader, getFontOptions, getImgOptions } = require('./rules-conf')(mode, env)
 
   return {
     context: path.resolve(__dirname, '..'),

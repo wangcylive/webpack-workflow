@@ -1,5 +1,5 @@
 const path = require('path')
-const findSync = require('./find.path.sync')
+const findSync = require('./find-path-sync')
 
 const entryPath = findSync('./src/main')
 

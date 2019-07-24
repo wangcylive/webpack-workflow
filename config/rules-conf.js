@@ -1,6 +1,8 @@
 const ExtractTextPlugin = require('mini-css-extract-plugin')
-const { isProduction } = require('./env.conf')
-const { getAssetsPath } = require('./path.conf')
+const { isProduction } = require('./env-conf')
+const { getAssetsPath } = require('./path-conf')
+
+console.log('rules', process.env.NODE_ENV)
 
 const fileInlineLimit = 4000
 

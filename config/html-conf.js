@@ -1,8 +1,6 @@
 const path = require('path')
-const findSync = require('./find.path.sync')
-
+const findSync = require('./find-path-sync')
 const HtmlConf = require('html-webpack-plugin')
-
 const htmlPath = findSync('./src/html')
 
 const array = []

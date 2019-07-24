@@ -4,6 +4,8 @@ import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom'
 import { routes } from '@/router'
 import './layout.scss'
 
+console.log(process.env)
+
 function View (props) {
   return (
     <BrowserRouter>
