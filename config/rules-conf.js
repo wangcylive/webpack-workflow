@@ -2,36 +2,44 @@ const ExtractTextPlugin = require('mini-css-extract-plugin')
 const { isProduction } = require('./env-conf')
 const { getAssetsPath } = require('./path-conf')
 
-console.log('rules', process.env.NODE_ENV)
-
-const fileInlineLimit = 4000
-
-function getLoader (type, option) {
-  const loader = `${type}-loader`
-  const options = Object.assign({}, option, {
-    sourceMap: true
-  })
-  return {
-    loader,
-    options
-  }
-}
-
-const cssLoader = getLoader('css')
-const cssModuleLoader = getLoader('css', {
-  modules: true
-})
-const styleLoader = getLoader('style')
-const postcssLoader = getLoader('postcss')
-const sassLoader = getLoader('sass')
-const lessLoader = getLoader('less')
-
-const cssUse = [ postcssLoader ]
-const sassUse = [ postcssLoader, sassLoader ]
-const lessUse = [ postcssLoader, lessLoader ]
-
 module.exports = (mode, env) => {
   const isProd = isProduction(mode)
+
+  // 文件内联大小限制
+  const fileInlineLimit = 4000
+
+  // css module name设置
+  let localIdentName = '_[hash:base64:8]'
+  if (!isProd) {
+    localIdentName = '[path][name]__[local]'
+  }
+
+  function getLoader (type, option) {
+    const loader = `${type}-loader`
+    const options = Object.assign({}, option, {
+      sourceMap: true
+    })
+    return {
+      loader,
+      options
+    }
+  }
+
+  const cssLoader = getLoader('css')
+  const cssModuleLoader = getLoader('css', {
+    modules: {
+      localIdentName
+    }
+  })
+  const styleLoader = getLoader('style')
+  const postcssLoader = getLoader('postcss')
+  const sassLoader = getLoader('sass')
+  const lessLoader = getLoader('less')
+
+  const cssUse = [ postcssLoader ]
+  const sassUse = [ postcssLoader, sassLoader ]
+  const lessUse = [ postcssLoader, lessLoader ]
+
   const lastLoader = isProd ? ExtractTextPlugin.loader : styleLoader
 
   return {

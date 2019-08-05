@@ -7,9 +7,15 @@ export function updateUser (user) {
   }
 }
 
-export function login ({ phone, securityCode }) {
+export function asyncUploadUser () {
   return async function (dispatch) {
-    dispatch(updateUser({ ...user, auth: true }))
+    const user = {
+      auth: true,
+      nickName: 'react',
+      token: '123',
+      role: 2
+    }
+    dispatch(updateUser(user))
     return user
   }
 }

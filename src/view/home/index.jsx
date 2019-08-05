@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import css from './index.scss?module'
 
 class App extends Component {
   constructor (props) {
@@ -7,7 +8,10 @@ class App extends Component {
 
   render () {
     return (
-      <div>Home</div>
+      <div>
+        <div>Home</div>
+        <div className={css.module}>React</div>
+      </div>
     )
   }
 }

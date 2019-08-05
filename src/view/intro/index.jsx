@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
-class App extends Component {
-  constructor (props) {
-    super(props)
+function Intro (props) {
+  const [name, setName] = useState('react')
+  const storeName = useSelector()
+  const onChangeName = () => {
+    setName('React.js')
   }
-
-  render () {
-    return (
-      <div>Intro1</div>
-    )
-  }
+  return (
+    <div onClick={onChangeName}>Intro {name}</div>
+  )
 }
 
-export default App
+export default Intro

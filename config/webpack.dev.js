@@ -6,16 +6,19 @@ const packageJson = require('../package')
 const hostIp = require('./host-ip')
 const webpackBaseConf = require('./webpack.common')
 const serverPort = packageJson.serverPort
-process.env.NODE_ENV = development
 
 // 代理服务器
 const proxyServer = '/api'
 
 module.exports = (env) => {
+  process.env.NODE_ENV = development
   const defineEnv = {}
-  Object.entries(env).forEach(([key, value]) => {
-    defineEnv[key] = JSON.stringify(value)
-  })
+  if (env) {
+    Object.entries(env).forEach(([key, value]) => {
+      defineEnv[key] = JSON.stringify(value)
+      process.env[key] = value
+    })
+  }
   return webpackMerge(webpackBaseConf(development, env), {
     mode: development,
 
