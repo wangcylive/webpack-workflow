@@ -59,14 +59,22 @@ module.exports = (mode, env) => {
       return [ lastLoader, ...use ]
     },
     getFontOptions () {
-      const name = getAssetsPath(mode,`font/[name]${isProd && '.[hash]'}.[ext]`)
+      let filename = '[path][name].[ext]'
+      if (isProd) {
+        filename = 'font/[contenthash].[ext]'
+      }
+      const name = getAssetsPath(mode, filename)
       return {
         limit: fileInlineLimit,
         name
       }
     },
     getImgOptions () {
-      const name = getAssetsPath(mode,`img/[name]${isProd && '.[hash]'}.[ext]`)
+      let filename = '[path][name].[ext]'
+      if (isProd) {
+        filename = 'img/[contenthash].[ext]'
+      }
+      const name = getAssetsPath(mode, filename)
       return {
         limit: fileInlineLimit,
         name
