@@ -1,7 +1,10 @@
-import splitting from './splitting'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-const Home = splitting(() => import('@/view/home'))
-const Intro = splitting(() => import('@/view/intro'))
+Vue.use(VueRouter)
+
+const Home = () => import('@/view/home')
+const Intro = () => import('@/view/intro')
 
 export const routes = [
   {
@@ -16,3 +19,10 @@ export const routes = [
     name: 'Intro'
   }
 ]
+
+const router = new VueRouter({
+  routes,
+  mode: 'history'
+})
+
+export default router

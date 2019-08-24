@@ -1,10 +1,13 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
-import React from 'react'
-import ReactDom from 'react-dom'
+import Vue from 'vue'
+import router from '@/router'
+import store from '@/store'
 import View from '@/view'
 
-ReactDom.render(
-  React.createElement(View),
-  document.getElementById('app')
-)
+const app = new Vue({
+  el: document.getElementById('app'),
+  store,
+  router,
+  render: h => h(View)
+})

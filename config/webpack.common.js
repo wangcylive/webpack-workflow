@@ -1,6 +1,7 @@
 const path = require('path')
 const htmlWebpackPlugin = require('./html-conf')
 const entry = require('./main-conf')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = (mode, env) => {
   const { getCssLoader, getSassLoader, getLessLoader, getFontOptions, getImgOptions } = require('./rules-conf')(mode, env)
@@ -11,9 +12,13 @@ module.exports = (mode, env) => {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.js$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
+        },
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader'
         },
         {
           test: /\.css$/,
@@ -67,9 +72,10 @@ module.exports = (mode, env) => {
     },
 
     resolve: {
-      extensions: [ '.js', '.jsx', '.json' ],
+      extensions: [ '.js', '.vue', '.json' ],
 
       alias: {
+        'vue$': 'vue/dist/vue.esm.js',
         '@': path.resolve(__dirname, '../src'),
       },
     },
@@ -95,6 +101,6 @@ module.exports = (mode, env) => {
       },
     },
 
-    plugins: [ ...htmlWebpackPlugin ],
+    plugins: [ new VueLoaderPlugin(), ...htmlWebpackPlugin ],
   }
 }
