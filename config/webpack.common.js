@@ -11,45 +11,36 @@ module.exports = (mode, env) => {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.[t|j]sx?$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
         },
         {
+          test: /\.module\.css$/,
+          use: getCssLoader(true)
+        },
+        {
           test: /\.css$/,
-          oneOf: [
-            {
-              resourceQuery: /module/,
-              use: getCssLoader(true),
-            },
-            {
-              use: getCssLoader(),
-            },
-          ],
+          exclude: /\.module\.css$/,
+          use: getCssLoader()
+        },
+        {
+          test: /\.module\.s[ac]ss$/,
+          use: getSassLoader(true)
         },
         {
           test: /\.s[ac]ss$/,
-          oneOf: [
-            {
-              resourceQuery: /module/,
-              use: getSassLoader(true),
-            },
-            {
-              use: getSassLoader(),
-            },
-          ],
+          exclude: /\.module\.s[ac]ss$/,
+          use: getSassLoader()
+        },
+        {
+          test: /\.module\.less$/,
+          use: getLessLoader(true)
         },
         {
           test: /\.less$/,
-          oneOf: [
-            {
-              resourceQuery: /module/,
-              use: getLessLoader(true),
-            },
-            {
-              use: getLessLoader(),
-            },
-          ],
+          exclude: /\.module\.less$/,
+          use: getLessLoader()
         },
         {
           // 处理图片文件
@@ -67,7 +58,7 @@ module.exports = (mode, env) => {
     },
 
     resolve: {
-      extensions: [ '.js', '.jsx' ],
+      extensions: [ '.js', '.jsx', '.tsx', '.ts', '.json' ],
 
       alias: {
         '@': path.resolve(__dirname, '../src'),

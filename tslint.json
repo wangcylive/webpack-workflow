@@ -1,0 +1,53 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint-react-hooks",
+    "tslint-react",
+    "tslint-eslint-rules",
+    "tslint-config-prettier",
+    "tslint:latest",
+    "tslint:recommended"
+  ],
+  "jsRules": {
+  },
+  "rules": {
+    "jsx-no-lambda":false,
+    "jsx-no-bind":false,
+    "no-var-requires": false,
+    "interface-name": [true, "never-prefix"],
+    "jsx-wrap-multiline": false,
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": false,
+    "no-console": false,
+    "jsx-no-multiline-js": false,
+    "arrow-return-shorthand": true,
+    "object-literal-sort-keys": false,
+    "no-this-assignment": false,
+    "prefer-for-of": false,
+    "ordered-imports": false,
+    "member-ordering": false,
+    "only-arrow-functions": false,
+    "no-shadowed-variable": false,
+    "react-hooks-nesting": "error",
+    "no-empty-interface": false,
+    "trailing-comma": [true, { "multiline": "never", "singleline": "never" }],
+    "eofline": false,
+    "space-before-function-paren": false,
+    "arrow-parens": false,
+    "no-trailing-whitespace": false,
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double"
+    ],
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "forin": false,
+    "no-empty": false
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+  }
+}

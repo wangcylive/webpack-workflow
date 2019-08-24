@@ -14,27 +14,29 @@ module.exports = (mode, env) => {
     localIdentName = '[path][name]__[local]'
   }
 
-  function getLoader (type, option) {
+  function getLoader (type, options) {
     const loader = `${type}-loader`
-    const options = Object.assign({}, option, {
-      sourceMap: true
-    })
     return {
       loader,
       options
     }
   }
 
-  const cssLoader = getLoader('css')
+  const defaultOptions = {
+    sourceMap: true
+  }
+
+  const cssLoader = getLoader('css', defaultOptions)
   const cssModuleLoader = getLoader('css', {
+    ...defaultOptions,
     modules: {
       localIdentName
     }
   })
   const styleLoader = getLoader('style')
-  const postcssLoader = getLoader('postcss')
-  const sassLoader = getLoader('sass')
-  const lessLoader = getLoader('less')
+  const postcssLoader = getLoader('postcss', defaultOptions)
+  const sassLoader = getLoader('sass', defaultOptions)
+  const lessLoader = getLoader('less', defaultOptions)
 
   const cssUse = [ postcssLoader ]
   const sassUse = [ postcssLoader, sassLoader ]

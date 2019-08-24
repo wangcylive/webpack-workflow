@@ -1,15 +1,16 @@
 export const UPDATE_USER = 'UPDATE_USER'
+import { User, Action } from './index'
 
-export function updateUser (user) {
+export function updateUser (user: User): Action {
   return {
     type: UPDATE_USER,
-    user
+    payload: user
   }
 }
 
 export function asyncUploadUser () {
-  return async function (dispatch) {
-    const user = {
+  return async function (dispatch: any) {
+    const user: User = {
       auth: true,
       nickName: 'react',
       token: '123',

@@ -1,7 +1,8 @@
 import React from 'react'
-import styles from './index.scss?module'
+// @ts-ignore
+import styles from './index.module.scss'
 
-export default function (props) {
+export default function (props: any) {
   if (props.error) {
     return <div className={styles.loadFail}>加载失败，点击重新加载 <button onClick={props.retry}>重新加载</button></div>
   } else if (props.timedOut) {
