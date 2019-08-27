@@ -34,7 +34,5 @@
       "src/@types"
     ]
   },
-  "files": [
-    "global.d.ts"
-  ]
+  "files": []
 }

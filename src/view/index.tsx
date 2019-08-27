@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Provider } from 'react-redux'
 import { hot } from 'react-hot-loader/root'
 import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom'
@@ -7,7 +7,6 @@ import store from '../store'
 import './layout.scss'
 
 function View (props: any) {
-  const [ name, setName ] = useState('sss')
   return (
     <Provider store={store}>
       <BrowserRouter>
