@@ -9,7 +9,7 @@ class App extends Component {
   render () {
     return (
       <div>
-        <div>Home</div>
+        <div>Home Page</div>
         <div className={css.module}>React</div>
       </div>
     )
