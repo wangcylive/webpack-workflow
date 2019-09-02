@@ -10,6 +10,7 @@ const { production } = require('./env-conf')
 const { getAssetsPath } = require('./path-conf')
 
 module.exports = (env) => {
+  process.env.NODE_ENV = production
   const publicPath = '/'
 
   return webpackMerge(webpackBaseConf(production, env), {
