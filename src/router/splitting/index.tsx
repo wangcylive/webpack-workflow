@@ -1,10 +1,19 @@
-// @ts-ignore
-import Loadable from 'react-loadable'
-import Loading from './loading'
+import React from 'react'
+import loadable from '@loadable/component'
+import LoadableLoading from './loadable-loading'
+import LoadableErrorBoundary from './loadable-error-boundary'
 
-export default (loader: any) => Loadable({
-  loader,
-  loading: Loading,
-  timeout: 10000,
-  delay: 200
-})
+const { createElement } = React
+
+function loadableHoc (loader: any) {
+  return (props: any) => {
+    return createElement(LoadableErrorBoundary,
+      props,
+      createElement(loadable(loader, {
+        fallback: createElement(LoadableLoading)
+      }), props)
+    )
+  }
+}
+
+export default loadableHoc

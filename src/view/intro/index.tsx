@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { hot } from 'react-hot-loader/root'
 import { useSelector, useDispatch } from 'react-redux'
 import { Store } from '@/store'
 import { updateUser } from '@/store/user/actions'
@@ -28,4 +29,4 @@ function Intro (props: any) {
   )
 }
 
-export default Intro
+export default hot(Intro)
