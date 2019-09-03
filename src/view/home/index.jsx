@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { hot } from 'react-hot-loader/root'
 import css from './index.scss?module'
 
 class App extends Component {
@@ -9,11 +10,10 @@ class App extends Component {
   render () {
     return (
       <div>
-        <div>Home Page</div>
-        <div className={css.module}>React</div>
+        <div className={css.module}>Home Page</div>
       </div>
     )
   }
 }
 
-export default App
+export default hot(App)

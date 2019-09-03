@@ -1,13 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { hot } from 'react-hot-loader/root'
 
 function Intro (props) {
-  const [name, setName] = useState('react')
-  const onChangeName = () => {
-    setName('React.js')
-  }
   return (
-    <div onClick={onChangeName}>Intro {name}</div>
+    <div>Intro Page</div>
   )
 }
 
-export default Intro
+export default hot(Intro)

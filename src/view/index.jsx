@@ -1,5 +1,5 @@
-import { hot } from 'react-hot-loader/root'
 import React from 'react'
+import { hot } from 'react-hot-loader/root'
 import { Provider } from 'react-redux'
 import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom'
 import { routes } from '@/router'
