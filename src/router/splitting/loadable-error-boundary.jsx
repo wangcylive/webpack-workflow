@@ -24,7 +24,6 @@ class LoadableErrorBoundary extends React.Component {
   }
 
   componentDidCatch (error, errorInfo) {
-    // TODO 错误统计
     console.log(error, errorInfo)
   }
 
