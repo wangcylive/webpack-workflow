@@ -1,13 +1,15 @@
 import React from 'react'
-// @ts-ignore
 import css from './index.module.scss'
 
+interface Props {
+  children?: React.ReactNode
+}
 interface State {
   errorStatus: number
 }
 
-class LoadableErrorBoundary extends React.Component<any, State> {
-  constructor (props: any) {
+class LoadableErrorBoundary extends React.Component<Props, State> {
+  constructor (props: Props) {
     super(props)
     this.state = {
       errorStatus: 0

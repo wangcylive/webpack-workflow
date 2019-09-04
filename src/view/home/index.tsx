@@ -1,7 +1,6 @@
 import React from 'react'
 import { hot } from 'react-hot-loader/root'
-// @ts-ignore
-import * as css from './index.module.scss'
+import css from './index.module.scss'
 
 function Home (props: any) {
   return (
