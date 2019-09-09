@@ -1,18 +1,13 @@
 import React from 'react'
-import { setConfig } from 'react-hot-loader'
 import { hot } from 'react-hot-loader/root'
 import ErrorBoundary from './error-boundary'
 import { Provider } from 'react-redux'
 import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom'
-import { routes } from '../router'
+import { routes } from '@/router'
 import store from '../store'
 import './layout.scss'
 
-setConfig({
-  reloadHooks: false
-})
-
-function View(props: any) {
+const View: React.FC<{}> = (props) => {
   return (
     <ErrorBoundary>
       <Provider store={store}>
