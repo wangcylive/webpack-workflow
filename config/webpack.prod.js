@@ -11,6 +11,13 @@ const { getAssetsPath } = require('./path-conf')
 
 module.exports = (env) => {
   process.env.NODE_ENV = production
+  const defineEnv = {}
+  if (env) {
+    Object.entries(env).forEach(([key, value]) => {
+      defineEnv[key] = JSON.stringify(value)
+      process.env[key] = value
+    })
+  }
   const publicPath = '/'
 
   return webpackMerge(webpackBaseConf(production, env), {
@@ -33,6 +40,7 @@ module.exports = (env) => {
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify(production),
+          ...defineEnv
         },
       }),
       new CleanWebpackPlugin(),
