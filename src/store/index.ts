@@ -1,23 +1,12 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
-import thunkMiddleware from 'redux-thunk'
-import user, { User } from './user'
+import UserStore from '@/store/user'
 
-export interface Store {
-  user: User
+export class RootStore {
+  public userStore: UserStore
+  constructor() {
+    this.userStore = new UserStore()
+  }
 }
 
-const rootReducer = combineReducers({
-  user
-})
-
-// @ts-ignore
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-
-const store = createStore(
-  rootReducer,
-  composeEnhancers(
-    applyMiddleware(thunkMiddleware)
-  )
-)
+const store = new RootStore()
 
 export default store

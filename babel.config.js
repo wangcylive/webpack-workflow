@@ -12,7 +12,8 @@ module.exports = {
   ],
   'plugins': [
     'react-hot-loader/babel',
-    '@babel/plugin-proposal-class-properties',
+    [ '@babel/plugin-proposal-decorators', { 'legacy': true } ],
+    [ '@babel/plugin-proposal-class-properties', { 'loose': true } ],
     '@babel/plugin-transform-arrow-functions',
     '@babel/plugin-transform-block-scoped-functions',
     '@babel/plugin-transform-block-scoping',
@@ -45,7 +46,6 @@ module.exports = {
     [ '@babel/plugin-proposal-pipeline-operator', { 'proposal': 'minimal' } ],
     [ '@babel/plugin-proposal-nullish-coalescing-operator', { 'loose': false } ],
     '@babel/plugin-proposal-do-expressions',
-    [ '@babel/plugin-proposal-decorators', { 'legacy': true } ],
     '@babel/plugin-proposal-function-sent',
     '@babel/plugin-proposal-export-namespace-from',
     '@babel/plugin-proposal-numeric-separator',

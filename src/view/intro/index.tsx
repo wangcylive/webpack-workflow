@@ -1,30 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import { hot } from 'react-hot-loader/root'
-import { useSelector, useDispatch } from 'react-redux'
-import { Store } from '@/store'
-import { updateUser } from '@/store/user/actions'
+import useStores from '@/store/use-stores'
+import { useObserver } from 'mobx-react'
 
 const Intro: React.FC<{}> = (props) => {
+  const {userStore} = useStores()
   const [ name, setName ] = useState<string>('react')
-  const storeName = useSelector<Store, string>((state) => state.user.nickName)
-  const dispatch = useDispatch()
+
   const onChangeName = () => {
     setName('React.js')
   }
 
+  console.log('render', performance.now())
+
   useEffect(() => {
-    dispatch(updateUser({
+    userStore.updateUser({
       nickName: 'react',
       auth: true,
       role: 2,
       token: '5'
-    }))
+    })
   }, [])
 
-  return (
+  return useObserver(() =>
     <div>
       <div onClick={onChangeName}>Intro {name}</div>
-      <div>Redux name: {storeName}</div>
+      <div>Redux name: {userStore.user.nickName}</div>
     </div>
   )
 }

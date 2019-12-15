@@ -1,32 +1,28 @@
-import { UPDATE_USER } from './actions'
+import { action, observable } from 'mobx'
 
 export interface User {
-  auth: boolean,
-  nickName: string,
-  token: string,
+  auth: boolean
+  nickName: string
+  token: string
   role: number
 }
 
-export interface Action {
-  type: string,
-  payload: any
-}
+class UserStore {
+  @observable public user: User = {
+    auth: true,
+    nickName: '',
+    token: '',
+    role: 0
+  }
 
-const user: User = {
-  auth: true,
-  nickName: '',
-  token: '',
-  role: 0
-}
-
-export default function (state = user, action: Action) {
-  switch (action.type) {
-    case UPDATE_USER:
-      return {
-        ...state,
-        ...action.payload
-      }
-    default:
-      return state
+  @action
+  public updateUser (param: Partial<User>): User {
+    this.user = {
+      ...this.user,
+      ...param
+    }
+    return this.user
   }
 }
+
+export default UserStore
