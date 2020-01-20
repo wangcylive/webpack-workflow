@@ -7,16 +7,3 @@ export function updateUser (user: User): Action {
     payload: user
   }
 }
-
-export function asyncUploadUser () {
-  return async function (dispatch: any) {
-    const user: User = {
-      auth: true,
-      nickName: 'react',
-      token: '123',
-      role: 2
-    }
-    dispatch(updateUser(user))
-    return user
-  }
-}

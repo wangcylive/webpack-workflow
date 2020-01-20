@@ -1,10 +1,10 @@
 import React from 'react'
 
 interface Props {
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 interface State {
-  hasError: boolean
+  hasError: boolean;
 }
 
 class ErrorBoundary extends React.Component<Props, State> {
@@ -15,15 +15,15 @@ class ErrorBoundary extends React.Component<Props, State> {
     }
   }
 
-  public static getDerivedStateFromError (error: any) {
+  public static getDerivedStateFromError (error: any): State {
     return { hasError: true }
   }
 
-  public componentDidCatch (error: any, errorInfo: any) {
+  public componentDidCatch (error: any, errorInfo: any): void {
     console.log(error, errorInfo)
   }
 
-  public render () {
+  public render (): React.ReactNode {
     if (this.state.hasError) {
       return <div>Render Error.</div>
     }

@@ -12,7 +12,7 @@ setConfig({
   reloadHooks: false
 })
 
-function View(props: any) {
+const View: React.FC<{}> = (props) => {
   return (
     <ErrorBoundary>
       <Provider store={store}>

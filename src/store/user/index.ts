@@ -1,15 +1,15 @@
 import { UPDATE_USER } from './actions'
 
 export interface User {
-  auth: boolean,
-  nickName: string,
-  token: string,
-  role: number
+  auth: boolean;
+  nickName: string;
+  token: string;
+  role: number;
 }
 
 export interface Action {
-  type: string,
-  payload: any
+  type: string;
+  payload: any;
 }
 
 const user: User = {

@@ -2,7 +2,7 @@ import React from 'react'
 import { hot } from 'react-hot-loader/root'
 import css from './index.module.scss'
 
-function Home (props: any) {
+const Home: React.FC<{}> = (props) => {
   return (
     <div>
       <div>Home Page</div>

@@ -15,9 +15,13 @@
   "dependencies": {
     "@hot-loader/react-dom": "npm:@hot-loader/react-dom",
     "@loadable/component": "^5.10.2",
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "core-js": "3.2.1",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.18.0",
     "history": "^4.9.0",
     "prop-types": "^15.6.2",
     "react": "^16.9.0",

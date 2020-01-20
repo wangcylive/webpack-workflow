@@ -4,11 +4,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Store } from '@/store'
 import { updateUser } from '@/store/user/actions'
 
-function Intro (props: any) {
+const Intro: React.FC<{}> = (props) => {
   const [name, setName] = useState('react')
   const storeName = useSelector((state: Store) => state.user.nickName)
   const dispatch = useDispatch()
-  const onChangeName = () => {
+  const onChangeName = (): void => {
     setName('React.js')
   }
 

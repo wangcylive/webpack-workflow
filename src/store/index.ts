@@ -3,7 +3,7 @@ import thunkMiddleware from 'redux-thunk'
 import user, { User } from './user'
 
 export interface Store {
-  user: User
+  user: User;
 }
 
 const rootReducer = combineReducers({

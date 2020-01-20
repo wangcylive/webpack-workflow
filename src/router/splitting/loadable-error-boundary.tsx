@@ -2,10 +2,10 @@ import React from 'react'
 import css from './index.module.scss'
 
 interface Props {
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 interface State {
-  errorStatus: number
+  errorStatus: number;
 }
 
 class LoadableErrorBoundary extends React.Component<Props, State> {
@@ -16,13 +16,13 @@ class LoadableErrorBoundary extends React.Component<Props, State> {
     }
   }
 
-  public reload = () => {
+  public reload = (): void => {
     this.setState({
       errorStatus: 0
     })
   }
 
-  public static getDerivedStateFromError (error: any) {
+  public static getDerivedStateFromError (error: any): State {
     let errorStatus = 1
     if (error && error.request) {
       errorStatus = 2
@@ -30,11 +30,11 @@ class LoadableErrorBoundary extends React.Component<Props, State> {
     return { errorStatus }
   }
 
-  public componentDidCatch (error: any, errorInfo: any) {
+  public componentDidCatch (error: any, errorInfo: any): void {
     console.log(error, errorInfo)
   }
 
-  public render () {
+  public render (): React.ReactNode {
     const errorStatus = this.state.errorStatus
     if (errorStatus === 2) {
       return <div className={css.loadFail}>页面加载错误
