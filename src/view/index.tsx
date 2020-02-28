@@ -9,29 +9,43 @@ import store from '../store'
 import './layout.scss'
 
 setConfig({
-  reloadHooks: false
+  reloadHooks: false,
 })
 
-const View: React.FC<{}> = (props) => {
+const View: React.FC<{}> = props => {
   return (
     <ErrorBoundary>
       <Provider store={store}>
         <BrowserRouter>
           <div className="page">
-            <h1 className="page-title">Typescript + React + React-Redux + React-Router</h1>
+            <h1 className="page-title">
+              Typescript + React + React-Redux + React-Router
+            </h1>
             <nav className="page-nav">
-              {
-                routes.map((route) => <NavLink activeClassName="active" exact={route.exact} to={route.path}
-                                               key={route.path}>{route.name}</NavLink>)
-              }
+              {routes.map(route => (
+                <NavLink
+                  activeClassName="active"
+                  exact={route.exact}
+                  to={route.path}
+                  key={route.path}
+                >
+                  {route.name}
+                </NavLink>
+              ))}
             </nav>
+            <div>3232</div>
+            <div></div>
           </div>
           <div>
             <Switch>
-              {
-                routes.map((route) => <Route key={route.path} path={route.path} exact={route.exact}
-                                             component={route.component}/>)
-              }
+              {routes.map(route => (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  exact={route.exact}
+                  component={route.component}
+                />
+              ))}
             </Switch>
           </div>
         </BrowserRouter>

@@ -6,3 +6,7 @@ dist
 !.editorconfig
 !.gitignore
 !.postcssrc.js
+!.eslintignore
+!.eslintrc.js
+!.prettierignore
+!.prettierrc

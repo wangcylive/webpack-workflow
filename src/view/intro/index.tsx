@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Store } from '@/store'
 import { updateUser } from '@/store/user/actions'
 
-const Intro: React.FC<{}> = (props) => {
+const Intro: React.FC<{}> = props => {
   const [name, setName] = useState('react')
   const storeName = useSelector((state: Store) => state.user.nickName)
   const dispatch = useDispatch()
@@ -13,12 +13,14 @@ const Intro: React.FC<{}> = (props) => {
   }
 
   useEffect(() => {
-    dispatch(updateUser({
-      nickName: 'react',
-      auth: true,
-      role: 2,
-      token: '5'
-    }))
+    dispatch(
+      updateUser({
+        nickName: 'react',
+        auth: true,
+        role: 2,
+        token: '5',
+      })
+    )
   }, [])
 
   return (
