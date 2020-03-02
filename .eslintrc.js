@@ -1,25 +1,32 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  plugins: [
-    '@typescript-eslint'
-  ],
+  plugins: ['@typescript-eslint', 'prettier', 'react', 'jest'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
+    'prettier/@typescript-eslint',
+    'prettier/react',
+    'plugin:jest/recommended',
   ],
   rules: {
-    '@typescript-eslint/member-delimiter-style': ['error', {
-      'multiline': {
-        'delimiter': 'none',
-        'requireLast': false
-      }
-    }]
+    'prettier/prettier': 'error',
+    '@typescript-eslint/ban-ts-ignore': 'off',
+  },
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
   env: {
     browser: true,
-    node: true
-  }
+    node: false,
+  },
 }
