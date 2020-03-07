@@ -3,11 +3,11 @@ import thunkMiddleware from 'redux-thunk'
 import user, { User } from './user'
 
 export interface Store {
-  user: User;
+  user: User
 }
 
 const rootReducer = combineReducers({
-  user
+  user,
 })
 
 // @ts-ignore
@@ -15,9 +15,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(
-    applyMiddleware(thunkMiddleware)
-  )
+  composeEnhancers(applyMiddleware(thunkMiddleware))
 )
 
 export default store

@@ -4,7 +4,7 @@ import { hot } from 'react-hot-loader/root'
 import ErrorBoundary from './error-boundary'
 import { Provider } from 'react-redux'
 import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom'
-import { routes } from '../router'
+import { routes } from '@/router'
 import store from '../store'
 import './layout.scss'
 
@@ -12,7 +12,7 @@ setConfig({
   reloadHooks: false,
 })
 
-const View: React.FC<{}> = props => {
+function View(props: any) {
   return (
     <ErrorBoundary>
       <Provider store={store}>
@@ -33,8 +33,6 @@ const View: React.FC<{}> = props => {
                 </NavLink>
               ))}
             </nav>
-            <div>3232</div>
-            <div></div>
           </div>
           <div>
             <Switch>
