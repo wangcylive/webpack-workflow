@@ -12,23 +12,16 @@ setConfig({
   reloadHooks: false,
 })
 
-function View(props: any) {
+const View: React.FC = () => {
   return (
     <ErrorBoundary>
       <Provider store={store}>
         <BrowserRouter>
           <div className="page">
-            <h1 className="page-title">
-              Typescript + React + React-Redux + React-Router
-            </h1>
+            <h1 className="page-title">Typescript + React + React-Redux + React-Router</h1>
             <nav className="page-nav">
-              {routes.map(route => (
-                <NavLink
-                  activeClassName="active"
-                  exact={route.exact}
-                  to={route.path}
-                  key={route.path}
-                >
+              {routes.map((route) => (
+                <NavLink activeClassName="active" exact={route.exact} to={route.path} key={route.path}>
                   {route.name}
                 </NavLink>
               ))}
@@ -36,13 +29,8 @@ function View(props: any) {
           </div>
           <div>
             <Switch>
-              {routes.map(route => (
-                <Route
-                  key={route.path}
-                  path={route.path}
-                  exact={route.exact}
-                  component={route.component}
-                />
+              {routes.map((route) => (
+                <Route key={route.path} path={route.path} exact={route.exact} component={route.component} />
               ))}
             </Switch>
           </div>

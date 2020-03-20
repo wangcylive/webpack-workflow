@@ -19,7 +19,7 @@ const user: User = {
   role: 0,
 }
 
-export default function(state = user, action: Action) {
+export default function(state = user, action: Action): User {
   switch (action.type) {
     case UPDATE_USER:
       return {

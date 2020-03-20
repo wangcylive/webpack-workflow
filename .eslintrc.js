@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'prettier', 'react', 'jest'],
+  plugins: ['@typescript-eslint', 'prettier', 'react', 'react-hooks', 'jest'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
@@ -13,8 +13,11 @@ module.exports = {
     'plugin:jest/recommended',
   ],
   rules: {
-    'prettier/prettier': 'error',
+    'prettier/prettier': 'warn',
+    '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   parserOptions: {
     ecmaFeatures: {
