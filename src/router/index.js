@@ -11,18 +11,18 @@ export const routes = [
     path: '/',
     exact: true,
     component: Home,
-    name: 'Home'
+    name: 'Home',
   },
   {
     path: '/intro',
     component: Intro,
-    name: 'Intro'
-  }
+    name: 'Intro',
+  },
 ]
 
 const router = new VueRouter({
   routes,
-  mode: 'history'
+  mode: 'history',
 })
 
 export default router

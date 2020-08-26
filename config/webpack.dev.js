@@ -1,27 +1,15 @@
 const path = require('path')
-const webpack = require('webpack')
-const webpackMerge = require('webpack-merge')
-const { development } = require('./env-conf')
+const { merge } = require('webpack-merge')
 const packageJson = require('../package')
-const hostIp = require('./host-ip')
 const webpackBaseConf = require('./webpack.common')
+const internalIp = require('internal-ip')
 const serverPort = packageJson.serverPort
 
 // 代理服务器
 const proxyServer = '/api'
 
 module.exports = (env) => {
-  process.env.NODE_ENV = development
-  const defineEnv = {}
-  if (env) {
-    Object.entries(env).forEach(([key, value]) => {
-      defineEnv[key] = JSON.stringify(value)
-      process.env[key] = value
-    })
-  }
-  return webpackMerge(webpackBaseConf(development, env), {
-    mode: development,
-
+  return merge(webpackBaseConf(env), {
     output: {
       publicPath: '/',
       filename: '[name].js',
@@ -44,20 +32,10 @@ module.exports = (env) => {
         },
       },
     },
-
-
-    plugins: [
-      new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify(development),
-          ...defineEnv
-        }
-      }),
-    ],
   })
 }
 
 console.log(`start ${packageJson.name} server:
 http://localhost:${serverPort}
-http://${hostIp()}:${serverPort}
+http://${internalIp.v4.sync()}:${serverPort}
 `)

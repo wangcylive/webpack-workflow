@@ -2,28 +2,28 @@ const state = {
   auth: true,
   nickName: '',
   token: '',
-  role: 0
+  role: 0,
 }
 
 const getters = {
-  nicName: state => state.nickName
+  nickName: (state) => state.nickName,
 }
 
 const mutations = {
-  updateUser (state, payload) {
+  updateUser(state, payload) {
     Object.assign(state, payload)
-  }
+  },
 }
 
 const actions = {
-  async updateUser ({ commit }, payload) {
+  async updateUser({ commit }, payload) {
     commit('updateUser', payload)
-  }
+  },
 }
 
 export default {
   state,
   getters,
   mutations,
-  actions
+  actions,
 }

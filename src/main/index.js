@@ -9,5 +9,5 @@ const app = new Vue({
   el: document.getElementById('app'),
   store,
   router,
-  render: h => h(View)
+  render: (h) => h(View),
 })

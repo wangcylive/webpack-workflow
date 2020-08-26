@@ -1,14 +1,27 @@
 const path = require('path')
 const htmlWebpackPlugin = require('./html-conf')
 const entry = require('./main-conf')
+const webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-module.exports = (mode, env) => {
-  const { getCssLoader, getSassLoader, getLessLoader, getFontOptions, getImgOptions } = require('./rules-conf')(mode, env)
+module.exports = (env) => {
+  const defineEnv = {
+    NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+  }
+  if (env) {
+    Object.entries(env).forEach(([key, value]) => {
+      defineEnv[key] = JSON.stringify(value)
+    })
+  }
+
+  const { getCssLoader, getSassLoader, getLessLoader, getFontOptions, getImgOptions } = require('./rules-conf')(
+    env
+  )
 
   return {
     context: path.resolve(__dirname, '..'),
     entry,
+    mode: process.env.NODE_ENV,
     module: {
       rules: [
         {
@@ -18,7 +31,7 @@ module.exports = (mode, env) => {
         },
         {
           test: /\.vue$/,
-          loader: 'vue-loader'
+          loader: 'vue-loader',
         },
         {
           test: /\.css$/,
@@ -72,10 +85,10 @@ module.exports = (mode, env) => {
     },
 
     resolve: {
-      extensions: [ '.js', '.vue', '.json' ],
+      extensions: ['.js', '.vue', '.json'],
 
       alias: {
-        'vue$': 'vue/dist/vue.esm.js',
+        vue$: 'vue/dist/vue.esm.js',
         '@': path.resolve(__dirname, '../src'),
       },
     },
@@ -91,16 +104,30 @@ module.exports = (mode, env) => {
       },
       splitChunks: {
         cacheGroups: {
+          vue: {
+            test: /[\\/]node_modules[\\/](vue|vuex|vue-router|axios)[\\/]/,
+            name: 'vue',
+            chunks: 'all',
+            priority: -1,
+          },
           vendors: {
             test: /[\\/]node_modules[\\/]/,
             name: 'vendors',
-            priority: -20,
+            priority: -2,
             chunks: 'all',
           },
         },
       },
     },
 
-    plugins: [ new VueLoaderPlugin(), ...htmlWebpackPlugin ],
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.env': {
+          ...defineEnv,
+        },
+      }),
+      new VueLoaderPlugin(),
+      ...htmlWebpackPlugin,
+    ],
   }
 }

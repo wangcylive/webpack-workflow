@@ -1,23 +1,21 @@
 <template>
-    <div @click="onChangeName">Intro {{ name }}</div>
+  <div @click="onChangeName">Intro {{ name }}</div>
 </template>
 
 <script>
 export default {
   name: 'Intro',
-  data () {
+  data() {
     return {
-      name: 'vue'
+      name: 'vue',
     }
   },
   methods: {
-    onChangeName () {
+    onChangeName() {
       this.name = 'vue ' + Date.now()
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
