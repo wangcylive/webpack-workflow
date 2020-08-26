@@ -79,6 +79,7 @@ module.exports = (env) => {
       const name = getAssetsPath(filename)
       return {
         limit: fileInlineLimit,
+        esModule: false,
         name,
       }
     },
