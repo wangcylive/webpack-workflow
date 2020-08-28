@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { ErrorInfo } from 'react'
 import css from './index.module.scss'
 
 interface Props {
+  onReload?: () => void
   children?: React.ReactNode
 }
 interface State {
@@ -20,8 +21,12 @@ class LoadableErrorBoundary extends React.Component<Props, State> {
     this.setState({
       errorStatus: 0,
     })
+    if (this.props.onReload) {
+      this.props.onReload()
+    }
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   public static getDerivedStateFromError(error: any): State {
     let errorStatus = 1
     if (error && error.request) {
@@ -30,7 +35,7 @@ class LoadableErrorBoundary extends React.Component<Props, State> {
     return { errorStatus }
   }
 
-  public componentDidCatch(error: any, errorInfo: any): void {
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     console.log(error, errorInfo)
   }
 

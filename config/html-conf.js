@@ -5,16 +5,18 @@ const htmlPath = findSync('./src/html')
 
 const array = []
 
-htmlPath.forEach(item => {
+htmlPath.forEach((item) => {
   const filename = item.split(path.sep).pop()
 
   const chunks = filename.substring(0, filename.lastIndexOf('.'))
 
-  array.push(new HtmlConf({
-    template: './' + item,
-    filename,
-    chunks: [ 'manifest', 'vendors', chunks ]
-  }))
+  array.push(
+    new HtmlConf({
+      template: './' + item,
+      filename,
+      chunks: ['manifest', 'react', 'vendors', chunks],
+    })
+  )
 })
 
 module.exports = array

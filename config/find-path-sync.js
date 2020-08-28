@@ -6,10 +6,10 @@ const join = require('path').join
  * @param startPath  起始目录文件夹路径
  * @returns {Array}
  */
-function findSync (startPath) {
+function findSync(startPath) {
   const result = []
 
-  function finder (path) {
+  function finder(path) {
     let files = fs.readdirSync(path)
 
     files.forEach((val, index) => {
@@ -22,7 +22,6 @@ function findSync (startPath) {
         result.push(fPath)
       }
     })
-
   }
 
   finder(startPath)

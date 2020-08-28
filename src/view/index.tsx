@@ -3,7 +3,8 @@ import { setConfig } from 'react-hot-loader'
 import { hot } from 'react-hot-loader/root'
 import ErrorBoundary from './error-boundary'
 import { Provider } from 'react-redux'
-import { BrowserRouter, NavLink, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, NavLink } from 'react-router-dom'
+import RouterView from '@/router/router-view'
 import { routes } from '@/router'
 import store from '../store'
 import './layout.scss'
@@ -28,11 +29,7 @@ const View: React.FC = () => {
             </nav>
           </div>
           <div>
-            <Switch>
-              {routes.map((route) => (
-                <Route key={route.path} path={route.path} exact={route.exact} component={route.component} />
-              ))}
-            </Switch>
+            <RouterView routes={routes} />
           </div>
         </BrowserRouter>
       </Provider>
