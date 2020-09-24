@@ -9,21 +9,19 @@ module.exports = (env) => {
   const defineEnv = {
     NODE_ENV: JSON.stringify(process.env.NODE_ENV),
   }
-
-  const alias = {
-    '@': path.resolve(__dirname, '../src'),
-  }
-
   if (env) {
     Object.entries(env).forEach(([key, value]) => {
       defineEnv[key] = JSON.stringify(value)
     })
+  }
 
-    if (!isProduction) {
-      Object.assign(alias, {
-        'react-dom': '@hot-loader/react-dom',
-      })
-    }
+  const alias = {
+    '@': path.resolve(__dirname, '../src'),
+  }
+  if (!isProduction) {
+    Object.assign(alias, {
+      'react-dom': '@hot-loader/react-dom',
+    })
   }
 
   return {
