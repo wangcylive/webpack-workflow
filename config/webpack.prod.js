@@ -6,7 +6,6 @@ const TerserJsPlugin = require('terser-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const webpackBaseConf = require('./webpack.common')
-const { production } = require('./env-conf')
 const { getAssetsPath } = require('./path-conf')
 
 module.exports = (env) => {
@@ -15,12 +14,12 @@ module.exports = (env) => {
   const plugins = [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: getAssetsPath(production, 'css/layout.[contenthash].css'),
-      chunkFilename: getAssetsPath(production, 'css/[id].[contenthash].css'),
+      filename: getAssetsPath('css/layout.[contenthash].css'),
+      chunkFilename: getAssetsPath('css/[id].[contenthash].css'),
     }),
   ]
 
-  if (env.analyzer) {
+  if (env && env.analyzer) {
     plugins.push(new BundleAnalyzerPlugin())
   }
 

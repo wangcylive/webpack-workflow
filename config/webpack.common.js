@@ -1,6 +1,7 @@
 const path = require('path')
 const htmlWebpackPlugin = require('./html-conf')
 const entry = require('./main-conf')
+const { isProduction } = require('./env-conf')
 
 module.exports = (env) => {
   const { getCssLoader, getSassLoader, getLessLoader, getFontOptions, getImgOptions } = require('./rules-conf')(env)
@@ -8,10 +9,21 @@ module.exports = (env) => {
   const defineEnv = {
     NODE_ENV: JSON.stringify(process.env.NODE_ENV),
   }
+
+  const alias = {
+    '@': path.resolve(__dirname, '../src'),
+  }
+
   if (env) {
     Object.entries(env).forEach(([key, value]) => {
       defineEnv[key] = JSON.stringify(value)
     })
+
+    if (!isProduction) {
+      Object.assign(alias, {
+        'react-dom': '@hot-loader/react-dom',
+      })
+    }
   }
 
   return {
@@ -68,12 +80,8 @@ module.exports = (env) => {
     },
 
     resolve: {
+      alias,
       extensions: ['.js', '.jsx', '.tsx', '.ts', '.json'],
-
-      alias: {
-        'react-dom': '@hot-loader/react-dom',
-        '@': path.resolve(__dirname, '../src'),
-      },
     },
 
     stats: {
