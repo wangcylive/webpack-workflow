@@ -1,7 +1,7 @@
 import React from 'react'
 import { hot } from 'react-hot-loader/root'
 
-const About: React.FC = () => {
+const About = () => {
   return <div>About</div>
 }
 
