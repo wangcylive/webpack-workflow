@@ -1,13 +1,8 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
-import Vue from 'vue'
+import { createApp } from 'vue'
 import router from '@/router'
 import store from '@/store'
 import View from '@/view'
 
-const app = new Vue({
-  el: document.getElementById('app'),
-  store,
-  router,
-  render: (h) => h(View),
-})
+const app = createApp(View).use(router).use(store).mount('#app')

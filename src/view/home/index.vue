@@ -10,24 +10,19 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { ref, toRef, watchEffect, computed } from 'vue'
+import { useStore } from 'vuex'
 export default {
   name: 'Home',
-  data() {
+  setup(props, context) {
+    const name = ref('')
+    const store = useStore()
+
     return {
-      name: '',
+      name,
+      updateNickName: () => store.dispatch('updateUser', { nickName: name.value }),
+      nickName: computed(() => store.state.user.nickName),
     }
-  },
-  computed: {
-    ...mapGetters(['nickName']),
-  },
-  methods: {
-    ...mapActions(['updateUser']),
-    updateNickName() {
-      this.updateUser({
-        nickName: this.name,
-      })
-    },
   },
 }
 </script>

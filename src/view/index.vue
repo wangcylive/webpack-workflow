@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page">
-      <h1 class="page-title">Vue + Vue-Router + Vuex</h1>
+      <h1 class="page-title">Vue3 + Vue-Router + Vuex</h1>
       <nav class="page-nav">
         <router-link v-for="item of routes" :key="item.path" :to="item.path" active-class="active" exact>{{
           item.name
@@ -15,12 +15,17 @@
 </template>
 
 <script>
+import { useRouter, useRoute } from 'vue-router'
 export default {
   name: 'VueView',
-  computed: {
-    routes() {
-      return this.$router.options.routes
-    },
+  setup() {
+    const router = useRouter()
+    const { params, query } = useRoute()
+    console.log(params, query)
+
+    return {
+      routes: router.getRoutes()
+    }
   },
 }
 </script>

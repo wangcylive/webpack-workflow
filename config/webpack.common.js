@@ -2,7 +2,7 @@ const path = require('path')
 const htmlWebpackPlugin = require('./html-conf')
 const entry = require('./main-conf')
 const webpack = require('webpack')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = (env) => {
   const defineEnv = {
@@ -88,7 +88,6 @@ module.exports = (env) => {
       extensions: ['.js', '.vue', '.json'],
 
       alias: {
-        vue$: 'vue/dist/vue.esm.js',
         '@': path.resolve(__dirname, '../src'),
       },
     },

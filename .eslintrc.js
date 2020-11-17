@@ -26,6 +26,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'no-empty': 'off',
     'no-case-declarations': 'off',
-    'no-prototype-builtins': 'off'
+    'no-prototype-builtins': 'off',
+    'vue/no-multiple-template-root': 'off',
   },
 }
