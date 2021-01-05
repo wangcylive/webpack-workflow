@@ -14,7 +14,7 @@
   "dependencies": {
     "@hot-loader/react-dom": "npm:@hot-loader/react-dom",
     "@loadable/component": "^5.10.2",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "core-js": "3.2.1",
     "history": "^4.9.0",
